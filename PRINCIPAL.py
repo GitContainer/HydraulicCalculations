@@ -1,12 +1,15 @@
 import sys
+
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
+
 import SECONDAIRE
 
 
 class Communicate(QObject):
     closeApp = pyqtSignal(list)
+
 
 class MyPopupDialog(QWidget):
     def __init__(self, parent=None):
@@ -31,7 +34,7 @@ class MyPopupDialog(QWidget):
         self.button_ok.setText("Send information")
         self.button_ok.clicked.connect(self.button_clicked_method)
 
-        layout.addRow(self.label_name1,self.qline_name1)
+        layout.addRow(self.label_name1, self.qline_name1)
         layout.addRow(self.label_name2, self.qline_name2)
         layout.addRow(self.label_name3, self.qline_name3)
         layout.addWidget(self.button_ok)
@@ -45,10 +48,7 @@ class MyPopupDialog(QWidget):
         self.c2.closeApp.emit(self.listInfo)
 
 
-
-
 class Principal(QMainWindow):
-
     def __init__(self, parent=None):
         super(Principal, self).__init__(parent)
         window = QWidget()
@@ -82,8 +82,8 @@ class Principal(QMainWindow):
         self.list = QTableWidget()
         self.list.setParent(window)
         self.list.move(20, 10)
-        self.list.setFixedSize(468,320)
-        self.list.setHorizontalHeaderLabels(('Ville','Identification','Station'))
+        self.list.setFixedSize(468, 320)
+        self.list.setHorizontalHeaderLabels(('Ville', 'Identification', 'Station'))
         self.list.setColumnWidth(0, 120)
         self.list.setColumnWidth(1, 80)
         self.list.setColumnWidth(2, 250)
@@ -93,7 +93,7 @@ class Principal(QMainWindow):
         self.list.setRowCount(len(database_list_storage))
         # len(database_list_storage) corresponds to how many values
         #  there are in database_list_storage horizontally, e.g: rows
-        self.list.setColumnCount(len(database_list_storage[0])-1)
+        self.list.setColumnCount(len(database_list_storage[0]) - 1)
         # len(database_list_storage) corresponds to the values in
         #  database_list_storage vertically speaking, e.g: columns
         for row in range(len(database_list_storage)):
@@ -101,7 +101,7 @@ class Principal(QMainWindow):
                 print(row)
                 print(column)
                 print(database_list_storage[row][column])
-                self.list.setItem(row, column-1, QTableWidgetItem(str(database_list_storage[row][column])))
+                self.list.setItem(row, column - 1, QTableWidgetItem(str(database_list_storage[row][column])))
         self.list.itemChanged.connect(self.item_changed)
         self.setCentralWidget(window)
 
@@ -142,6 +142,7 @@ class Principal(QMainWindow):
         item_column = self.list.currentItem().column()
         print(str(text_content), item_row, item_column)
         self.objectDatabase.update_database(text_content, item_row, item_column)
+
 
 app = QApplication(sys.argv)
 form = Principal()

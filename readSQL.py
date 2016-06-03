@@ -1,4 +1,3 @@
-from sqlite3 import *
 import sqlite3
 i = 0
 if i == 0:
