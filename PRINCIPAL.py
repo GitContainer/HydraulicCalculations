@@ -80,6 +80,7 @@ class Principal(QMainWindow):
         click_button.clicked.connect(self.click_button_method)
 
         self.list = QTableWidget()
+        self.table_element_message_storage = None
         self.list.setParent(window)
         self.list.move(20, 10)
         self.list.setFixedSize(468, 320)
@@ -102,17 +103,23 @@ class Principal(QMainWindow):
                 print(column)
                 print(database_list_storage[row][column])'''
                 self.list.setItem(row, column - 1, QTableWidgetItem(str(database_list_storage[row][column])))
+        self.list.itemClicked.connect(lambda test=self: setattr(self, 'table_element_message_storage',
+                                                                self.list.currentItem().text()))
         self.list.itemChanged.connect(self.item_changed)
         self.setCentralWidget(window)
 
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_Delete:
             print("Delete pressed")
-            indexes = self.list.verticalHeader().selectionModel().selectedRows()
-            if self.list.verticalHeader().selectionModel().hasSelection():
-                for index in indexes:
-                    self.objectDatabase.delete_to_database(self.list.item(index.row(), 1).text())
-                    self.list.removeRow(index.row())
+            if len(self.list.selectedItems()) == 3 or len(self.list.selectedItems()) == 2:
+                caution_message = "Are you sure you want to delete the data (in the table and in the database)?"
+                yes_no_dialog = QMessageBox.question(self, "Delete?", caution_message,
+                                                     QMessageBox.Yes, QMessageBox.Cancel)
+                if yes_no_dialog == QMessageBox.Yes:
+                    indexes = self.list.verticalHeader().selectionModel().selectedRows()
+                    for index in indexes:
+                        self.objectDatabase.delete_to_database(self.list.item(index.row(), 1).text())
+                        self.list.removeRow(index.row())
 
     @staticmethod
     def exit_button_method(self):
@@ -146,11 +153,19 @@ class Principal(QMainWindow):
 
     def item_changed(self):
         print("works")
-        text_content = self.list.currentItem().text()
-        item_row = self.list.currentItem().row()
-        item_column = self.list.currentItem().column()
-        print(str(text_content), item_row, item_column)
-        self.objectDatabase.update_database(text_content, item_row, item_column)
+        caution_message_for_item = "Change data?"
+        change_data_caution_form = QMessageBox.question(self, "Confirm", caution_message_for_item,
+                                                        QMessageBox.Yes, QMessageBox.Cancel)
+        if change_data_caution_form == QMessageBox.Yes:
+            text_content = self.list.currentItem().text()
+            item_row = self.list.currentItem().row()
+            item_column = self.list.currentItem().column()
+            print(str(text_content), item_row, item_column)
+            self.objectDatabase.update_database(text_content, item_row, item_column)
+        else:
+            self.list.blockSignals(True)
+            self.list.currentItem().setText(self.table_element_message_storage)
+            self.list.blockSignals(False)
 
 
 app = QApplication(sys.argv)
