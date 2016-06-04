@@ -111,7 +111,7 @@ class Principal(QMainWindow):
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_Delete:
             print("Delete pressed")
-            if len(self.list.selectedItems()) == 3 or len(self.list.selectedItems()) == 2:
+            if len(self.list.selectedItems()) == 3:
                 caution_message = "Are you sure you want to delete the data (in the table and in the database)?"
                 yes_no_dialog = QMessageBox.question(self, "Delete?", caution_message,
                                                      QMessageBox.Yes, QMessageBox.Cancel)
