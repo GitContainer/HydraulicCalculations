@@ -98,12 +98,21 @@ class Principal(QMainWindow):
         #  database_list_storage vertically speaking, e.g: columns
         for row in range(len(database_list_storage)):
             for column in range(1, len(database_list_storage[0])):
-                print(row)
+                '''print(row)
                 print(column)
-                print(database_list_storage[row][column])
+                print(database_list_storage[row][column])'''
                 self.list.setItem(row, column - 1, QTableWidgetItem(str(database_list_storage[row][column])))
         self.list.itemChanged.connect(self.item_changed)
         self.setCentralWidget(window)
+
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_Delete:
+            print("Delete pressed")
+            indexes = self.list.verticalHeader().selectionModel().selectedRows()
+            if self.list.verticalHeader().selectionModel().hasSelection():
+                for index in indexes:
+                    self.objectDatabase.delete_to_database(self.list.item(index.row(), 1).text())
+                    self.list.removeRow(index.row())
 
     @staticmethod
     def exit_button_method(self):

@@ -40,3 +40,9 @@ class DatabaseClass:
         self.cur.execute("INSERT INTO Cities VALUES(NULL,?,?,?)",
                          (text_to_add, identification_to_add, coordinates_to_add))
         self.dataBaseConnection.commit()
+
+    def delete_to_database(self, identification_number):
+        print("Deleting in the database")
+        print(identification_number)
+        self.cur.execute("DELETE FROM Cities WHERE Identification=?", (identification_number,))
+        self.dataBaseConnection.commit()
