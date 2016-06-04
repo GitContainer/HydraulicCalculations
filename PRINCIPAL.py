@@ -111,7 +111,7 @@ class Principal(QMainWindow):
         sys.exit()
 
     def create_button_method(self):
-        print("Create new row")
+        print("Create new data row")
 
         self.childWindow = MyPopupDialog()
         self.childWindow.c2.closeApp.connect(self.closed_emit)
