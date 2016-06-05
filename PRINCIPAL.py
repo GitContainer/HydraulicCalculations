@@ -1,5 +1,3 @@
-import sys
-
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
@@ -48,10 +46,9 @@ class MyPopupDialog(QWidget):
         self.c2.closeApp.emit(self.listInfo)
 
 
-class Principal(QMainWindow):
+class Principal(QWidget):
     def __init__(self, parent=None):
-        super(Principal, self).__init__(parent)
-        window = QWidget()
+        super().__init__()
         self.childWindow = None
 
         self.resize(670, 350)
@@ -59,21 +56,21 @@ class Principal(QMainWindow):
         self.objectDatabase = SECONDAIRE.DatabaseClass()
 
         exit_button = QPushButton("Quitter")
-        exit_button.setParent(window)
+        exit_button.setParent(self)
         exit_button.setFont(QFont("Arial", 10))
         exit_button.setFixedSize(120, 30)
         exit_button.move(520, 10)
         exit_button.clicked.connect(self.exit_button_method)
 
         self.newrow_button = QPushButton("New row")
-        self.newrow_button.setParent(window)
+        self.newrow_button.setParent(self)
         self.newrow_button.setFont(QFont("Arial", 10))
         self.newrow_button.setFixedSize(120, 30)
         self.newrow_button.move(520, 50)
         self.newrow_button.clicked.connect(self.create_button_method)
 
         click_button = QPushButton("Click")
-        click_button.setParent(window)
+        click_button.setParent(self)
         click_button.setFont(QFont("Arial", 10))
         click_button.setFixedSize(120, 30)
         click_button.move(520, 90)
@@ -81,7 +78,7 @@ class Principal(QMainWindow):
 
         self.list = QTableWidget()
         self.table_element_message_storage = None
-        self.list.setParent(window)
+        self.list.setParent(self)
         self.list.move(20, 10)
         self.list.setFixedSize(468, 320)
         self.list.setHorizontalHeaderLabels(('Ville', 'Identification', 'Station'))
@@ -106,7 +103,6 @@ class Principal(QMainWindow):
         self.list.itemClicked.connect(lambda test=self: setattr(self, 'table_element_message_storage',
                                                                 self.list.currentItem().text()))
         self.list.itemChanged.connect(self.item_changed)
-        self.setCentralWidget(window)
 
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_Delete:
@@ -121,10 +117,9 @@ class Principal(QMainWindow):
                         self.objectDatabase.delete_to_database(self.list.item(index.row(), 1).text())
                         self.list.removeRow(index.row())
 
-    @staticmethod
     def exit_button_method(self):
         print("Quitter")
-        sys.exit()
+        self.close()
 
     def create_button_method(self):
         print("Create new data row")
@@ -167,8 +162,7 @@ class Principal(QMainWindow):
             self.list.currentItem().setText(self.table_element_message_storage)
             self.list.blockSignals(False)
 
-
-app = QApplication(sys.argv)
-form = Principal()
-form.show()
-app.exec_()
+# app = QApplication(sys.argv)
+# form = Principal()
+# form.show()
+# app.exec_()

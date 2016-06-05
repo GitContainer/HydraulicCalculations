@@ -2,49 +2,53 @@ import sys
 
 from PyQt5.QtWidgets import *
 
+from PRINCIPAL import Principal
+
 
 class Hydraulique_menu(QMainWindow):
     def __init__(self, parent=None):
         super(Hydraulique_menu, self).__init__(parent)
         self.resize(670, 350)
-
+        self.childWindowHyd = None
         layout = QHBoxLayout()
-        bar = self.menuBar()
-        file = bar.addMenu("&Fichier")
-        file.addAction("Nouvelle operation")
+        self.bar = self.menuBar()
+        self.file = self.bar.addMenu("&Fichier")
+        self.file.addAction("Nouvelle operation")
 
-        save = QAction("Sauvegarde", self)
-        save.setShortcut("Ctrl+S")
-        file.addAction(save)
+        self.save = QAction("Sauvegarde", self)
+        self.save.setShortcut("Ctrl+S")
+        self.file.addAction(self.save)
 
-        edit = file.addMenu("Test")
-        # d
+        self.edit = self.file.addMenu("Test")
 
-        ville = QAction("Ville", self)
-        ville.setStatusTip('Ville')
-        ville.triggered.connect(self.ville)
-        file.addAction(ville)
+        self.ville = QAction("Ville", self)
+        self.ville.setStatusTip('Ville')
+        self.ville.triggered.connect(self.ville_process)
+        self.file.addAction(self.ville)
 
-        pluie = QAction("Pluie", self)
-        pluie.setStatusTip('Pluie')
-        pluie.triggered.connect(self.pluie)
-        file.addAction(pluie)
+        self.pluie = QAction("Pluie", self)
+        self.pluie.setStatusTip('Pluie')
+        self.pluie.triggered.connect(self.pluie_process)
+        self.file.addAction(self.pluie)
 
-        quit = QAction("Quitter", self)
-        file.addAction(quit)
-        file.triggered[QAction].connect(self.processtrigger)
+        self.quit = QAction("Quitter", self)
+        self.quit.triggered.connect(self.processtrigger)
+        self.file.addAction(self.quit)
         self.setLayout(layout)
-        self.setWindowTitle("Hydraulique Urbaine")
+        self.setWindowTitle("Hydraulique urbaine")
 
     def processtrigger(self, q):
         print(q.text() + " ok")
+        self.QApplication.exit()
 
-    def ville(self):
+    def ville_process(self):
         print("ville")
 
-    def pluie(self):
+    def pluie_process(self):
         print("Pluie")
-        self.childWindow = PRINCIPAL.Principal()
+        self.childWindowHyd = Principal()
+        self.childWindowHyd.show()
+
 
 
 def main():
