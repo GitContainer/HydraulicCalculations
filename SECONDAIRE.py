@@ -25,15 +25,17 @@ class DatabaseClass:
         list_cities_database = self.cur.fetchall()
         return list_cities_database
 
-    def update_database(self, text_to_be_replaced, id_object, column_object):
+    def update_database(self, text_to_be_replaced, identification_number, column_object):
         print("Updating database")
-        id_object += 1
         if column_object == 0:
-            self.cur.execute("UPDATE Cities SET Name=? WHERE reference=?", (text_to_be_replaced, id_object))
+            self.cur.execute("UPDATE Cities SET Name=? WHERE Identification=?",
+                             (text_to_be_replaced, identification_number))
         elif column_object == 1:
-            self.cur.execute("UPDATE Cities SET Identification=? WHERE reference=?", (text_to_be_replaced, id_object))
+            self.cur.execute("UPDATE Cities SET Identification=? WHERE Identification=?",
+                             (text_to_be_replaced, identification_number))
         elif column_object == 2:
-            self.cur.execute("UPDATE Cities SET Coordinates=? WHERE reference=?", (text_to_be_replaced, id_object))
+            self.cur.execute("UPDATE Cities SET Coordinates=? WHERE Identification=?",
+                             (text_to_be_replaced, identification_number))
         self.dataBaseConnection.commit()
 
     def add_to_database(self, text_to_add, identification_to_add, coordinates_to_add):

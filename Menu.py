@@ -1,8 +1,6 @@
 import sys
 
-from PyQt5.QtWidgets import *
-
-from PRINCIPAL import Principal
+from PRINCIPAL import *
 
 
 class Hydraulique_menu(QMainWindow):
@@ -11,8 +9,9 @@ class Hydraulique_menu(QMainWindow):
         self.resize(670, 350)
         self.childWindowHyd = None
         layout = QHBoxLayout()
+
         self.bar = self.menuBar()
-        self.file = self.bar.addMenu("&Fichier")
+        self.file = self.bar.addMenu("Fichier")
         self.file.addAction("Nouvelle operation")
 
         self.save = QAction("Sauvegarde", self)

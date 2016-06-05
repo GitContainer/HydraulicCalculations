@@ -1,5 +1,6 @@
 import sqlite3
-i = 0
+
+i = 1
 if i == 0:
     cities = (
                 ("Dunkerque","59183001","Alt : 11 m, lat : 51°03-18-N, lon : 02°20-18-E"),

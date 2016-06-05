@@ -152,11 +152,17 @@ class Principal(QWidget):
         change_data_caution_form = QMessageBox.question(self, "Confirm", caution_message_for_item,
                                                         QMessageBox.Yes, QMessageBox.Cancel)
         if change_data_caution_form == QMessageBox.Yes:
+            identification_number = None
             text_content = self.list.currentItem().text()
             item_row = self.list.currentItem().row()
             item_column = self.list.currentItem().column()
-            print(str(text_content), item_row, item_column)
-            self.objectDatabase.update_database(text_content, item_row, item_column)
+            print(str(text_content), item_row, item_column, self.list.item(item_row, 1).text())
+            if self.list.currentItem() == self.list.item(item_row, 1):
+                identification_number = self.table_element_message_storage
+            else:
+                identification_number = self.list.item(item_row, 1).text()
+            print(identification_number)
+            self.objectDatabase.update_database(text_content, identification_number, item_column)
         else:
             self.list.blockSignals(True)
             self.list.currentItem().setText(self.table_element_message_storage)
