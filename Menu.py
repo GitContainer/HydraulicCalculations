@@ -18,6 +18,7 @@ class Hydraulique_menu(QMainWindow):
         file.addAction(save)
 
         edit = file.addMenu("Test")
+        # d
 
         ville = QAction("Ville", self)
         ville.setStatusTip('Ville')
