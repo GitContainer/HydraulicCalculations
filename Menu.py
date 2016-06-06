@@ -1,7 +1,7 @@
 import sys
 
 from PRINCIPAL import *
-
+from Pluie import *
 
 class Hydraulique_menu(QMainWindow):
     def __init__(self, parent=None):
@@ -18,21 +18,22 @@ class Hydraulique_menu(QMainWindow):
         self.save.setShortcut("Ctrl+S")
         self.file.addAction(self.save)
 
-        self.edit = self.file.addMenu("Test")
+        self.test = self.file.addMenu("Test")
 
         self.ville = QAction("Ville", self)
         self.ville.setStatusTip('Ville')
         self.ville.triggered.connect(self.ville_process)
-        self.file.addAction(self.ville)
+        self.test.addAction(self.ville)
 
         self.pluie = QAction("Pluie", self)
         self.pluie.setStatusTip('Pluie')
         self.pluie.triggered.connect(self.pluie_process)
-        self.file.addAction(self.pluie)
+        self.test.addAction(self.pluie)
 
         self.quit = QAction("Quitter", self)
         self.quit.triggered.connect(self.processtrigger)
         self.file.addAction(self.quit)
+
         self.setLayout(layout)
         self.setWindowTitle("Hydraulique urbaine")
 
@@ -41,14 +42,12 @@ class Hydraulique_menu(QMainWindow):
         self.QApplication.exit()
 
     def ville_process(self):
-        print("ville")
-
-    def pluie_process(self):
-        print("Pluie")
         self.childWindowHyd = Principal()
         self.childWindowHyd.show()
 
-
+    def pluie_process(self):
+        self.childWindowHyd = pluie()
+        self.childWindowHyd.show()
 
 def main():
     app = QApplication(sys.argv)
