@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Menu</class>
+ <widget class="QMainWindow" name="Menu">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>782</width>
+    <height>395</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Hydraulique Urbaine</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>782</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFichier">
+    <property name="title">
+     <string>Fichier</string>
+    </property>
+    <addaction name="actionNouvelle_affaire"/>
+    <addaction name="actionChargement_affaire"/>
+    <addaction name="separator"/>
+    <addaction name="actionQuitter"/>
+   </widget>
+   <widget class="QMenu" name="menuHydraulique">
+    <property name="title">
+     <string>Hydraulique</string>
+    </property>
+    <addaction name="actionVilles"/>
+    <addaction name="actionMontana"/>
+   </widget>
+   <widget class="QMenu" name="menuBassins">
+    <property name="title">
+     <string>Bassins</string>
+    </property>
+    <addaction name="actionR_tention"/>
+    <addaction name="actionInfiltration"/>
+   </widget>
+   <addaction name="menuFichier"/>
+   <addaction name="menuHydraulique"/>
+   <addaction name="menuBassins"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionNouvelle_affaire">
+   <property name="text">
+    <string>Nouvelle affaire</string>
+   </property>
+  </action>
+  <action name="actionChargement_affaire">
+   <property name="text">
+    <string>Chargement affaire</string>
+   </property>
+  </action>
+  <action name="actionQuitter">
+   <property name="text">
+    <string>Quitter</string>
+   </property>
+  </action>
+  <action name="actionVilles">
+   <property name="text">
+    <string>Villes</string>
+   </property>
+  </action>
+  <action name="actionMontana">
+   <property name="text">
+    <string>Montana</string>
+   </property>
+  </action>
+  <action name="actionR_tention">
+   <property name="text">
+    <string>Rétention</string>
+   </property>
+  </action>
+  <action name="actionInfiltration">
+   <property name="text">
+    <string>Infiltration</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

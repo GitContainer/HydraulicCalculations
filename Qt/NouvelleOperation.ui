@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Operation</class>
+ <widget class="QDialog" name="Operation">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>612</width>
+    <height>602</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>612</width>
+    <height>602</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>612</width>
+    <height>602</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Nouvelle operation</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>bin/DPFL - LOGO.jpg</normaloff>bin/DPFL - LOGO.jpg</iconset>
+  </property>
+  <widget class="QDialogButtonBox" name="buttonBox">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>560</y>
+     <width>341</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+   </property>
+  </widget>
+  <widget class="QWidget" name="formLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>20</y>
+     <width>541</width>
+     <height>521</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="TextOperationLabel">
+      <property name="text">
+       <string>Désignation de l'opération</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="OperationLineEdit"/>
+    </item>
+    <item row="1" column="0">
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_4">
+      <property name="text">
+       <string>Bassin versant</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="BVLabel">
+      <property name="text">
+       <string>Surface du bassin versant</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="surfaceDuBassinVersantLineEdit"/>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="coefficientDApportLabel">
+      <property name="text">
+       <string>Coefficient d'apport</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="coefficientDApportLineEdit"/>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="surfaceActiveLabel">
+      <property name="text">
+       <string>Surface active</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLineEdit" name="surfaceActiveLineEdit"/>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Dimension</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLabel" name="longueurLabel">
+      <property name="text">
+       <string>Longueur</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="1">
+     <widget class="QLineEdit" name="longueurLineEdit"/>
+    </item>
+    <item row="8" column="0">
+     <widget class="QLabel" name="altitudeAmontLabel">
+      <property name="text">
+       <string>Altitude amont</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="1">
+     <widget class="QLineEdit" name="altitudeAmontLineEdit"/>
+    </item>
+    <item row="9" column="0">
+     <widget class="QLabel" name="altitudeAvalLabel">
+      <property name="text">
+       <string>Altitude Aval</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="1">
+     <widget class="QLineEdit" name="altitudeAvalLineEdit"/>
+    </item>
+    <item row="10" column="0">
+     <widget class="QLabel" name="penteMoyenneLabel">
+      <property name="text">
+       <string>Pente moyenne</string>
+      </property>
+     </widget>
+    </item>
+    <item row="10" column="1">
+     <widget class="QLineEdit" name="penteMoyenneLineEdit"/>
+    </item>
+    <item row="11" column="0">
+     <widget class="QLabel" name="dBitDeFuiteAutorisLabel">
+      <property name="text">
+       <string>Débit de fuite autorisé</string>
+      </property>
+     </widget>
+    </item>
+    <item row="11" column="1">
+     <widget class="QLineEdit" name="dBitDeFuiteAutorisLineEdit"/>
+    </item>
+    <item row="13" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Débit de vidange constant :</string>
+      </property>
+     </widget>
+    </item>
+    <item row="14" column="0">
+     <widget class="QLabel" name="ouiLabel">
+      <property name="text">
+       <string>Oui</string>
+      </property>
+     </widget>
+    </item>
+    <item row="14" column="1">
+     <widget class="QRadioButton" name="VidangeouiRadioButton">
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
+    <item row="15" column="1">
+     <widget class="QRadioButton" name="VidangenonRadioButton">
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
+    <item row="16" column="0">
+     <widget class="QLabel" name="coefficientMajorateurLabel">
+      <property name="text">
+       <string>Coefficient majorateur</string>
+      </property>
+     </widget>
+    </item>
+    <item row="16" column="1">
+     <widget class="QLineEdit" name="coefficientMajorateurLineEdit"/>
+    </item>
+    <item row="17" column="0">
+     <widget class="QLabel" name="coefficientDeSCuritLabel">
+      <property name="text">
+       <string>Coefficient de sécurité</string>
+      </property>
+     </widget>
+    </item>
+    <item row="17" column="1">
+     <widget class="QLineEdit" name="coefficientDeSCuritLineEdit"/>
+    </item>
+    <item row="18" column="0">
+     <spacer name="verticalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="19" column="0">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>Caracteristique du site</string>
+      </property>
+     </widget>
+    </item>
+    <item row="20" column="0">
+     <widget class="QLabel" name="terrainNaturelLabel">
+      <property name="text">
+       <string>Terrain naturel</string>
+      </property>
+     </widget>
+    </item>
+    <item row="20" column="1">
+     <widget class="QLineEdit" name="terrainNaturelLineEdit"/>
+    </item>
+    <item row="21" column="0">
+     <widget class="QLabel" name="nappePhrAtiqueLabel">
+      <property name="text">
+       <string>Nappe Phréatique</string>
+      </property>
+     </widget>
+    </item>
+    <item row="21" column="1">
+     <widget class="QLineEdit" name="nappePhrAtiqueLineEdit">
+      <property name="inputMask">
+       <string>999.999</string>
+      </property>
+     </widget>
+    </item>
+    <item row="22" column="0">
+     <widget class="QLabel" name="coefficientDePermAbilitLabel">
+      <property name="text">
+       <string>Coefficient de perméabilité</string>
+      </property>
+     </widget>
+    </item>
+    <item row="22" column="1">
+     <widget class="QLineEdit" name="coefficientDePermAbilitLineEdit"/>
+    </item>
+    <item row="15" column="0">
+     <widget class="QLabel" name="nonLabel">
+      <property name="text">
+       <string>Non</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>Operation</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>Operation</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <buttongroups>
+  <buttongroup name="buttonGroup"/>
+ </buttongroups>
+</ui>
